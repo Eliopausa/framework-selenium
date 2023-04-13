@@ -1,13 +1,14 @@
+# coding: utf-8
+
 from selenium import webdriver
 from framework.singleton import Singleton
-from selenium.webdriver.firefox.options import Options
+from selenium.webdriver.chrome.service import Service
 
 
 class Driver(metaclass=Singleton):
+    """ Класс-синглтон веб-драйвера. """
     def __init__(self):
-        options = Options()
-        options.binary_location = r"C:\Program Files\Mozilla Firefox\firefox.exe"
-        # self.firefox = webdriver.Firefox(
-        #     executable_path=r"C:\Projects\selenium-framework\drivers\firefox\geckodriver.exe")
+        # TODO: Сделать экземпляр для других браузеров: FireFox и т.д.
         self.chrome = webdriver.Chrome(
-            executable_path=r"C:\Projects\selenium-framework\drivers\chrome\chromedriver.exe")
+            service=Service(executable_path="drivers/chrome/chromedriver.exe"),
+            options=webdriver.ChromeOptions())

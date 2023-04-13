@@ -1,16 +1,17 @@
-from driver import Driver
+from framework.driver import Driver
 
 
 class BasePage:
+    """ Родительский класс для всех страниц тестируемого проекта. """
+
     def __init__(self):
-        browser = Driver()
-        self.browser = browser.chrome
+        self.browser = Driver().chrome
         self.url = ''
 
-    def open(self):
+    def open(self) -> None:
+        """ Открыть страницу. """
         self.browser.get(url=self.url)
 
-    def close(self):
+    def close(self) -> None:
+        # TODO: Доделать или удалить позже
         pass
-
-
